@@ -9,15 +9,13 @@ const input = takeInput[0];
 const elementId = input.setAttribute('id', 'inp');
 const elementCountInput = document.getElementById('inp');
 
-function createBoxes() {
-  const boxesContainer = document.getElementById('boxes');
+const boxesContainer = document.getElementById('boxes');
 
+function createBoxes(amount) {
     boxesContainer.innerHTML = '';
 
-    const elementCount = parseInt(elementCountInput.value);
-
-    if (elementCount >= 1 && elementCount <= 100) {
-        for (let i = 0; i < elementCount; i++) {
+    if (amount >= 1 && amount <= 100) {
+        for (let i = 0; i < amount; i++) {
             const newElement = document.createElement('div');
             newElement.className = 'box';
             newElement.style.backgroundColor = getRandomHexColor();
@@ -34,13 +32,15 @@ function createBoxes() {
 }
 
 function destroyBoxes() {
-    const boxesContainer = document.getElementById('boxes');
     boxesContainer.innerHTML = '';
 }
 
 const btnCreate = document.querySelector('[data-create]');
 
-btnCreate.addEventListener('click', createBoxes);
+btnCreate.addEventListener('click', function () {
+    let inputAmount = parseInt(elementCountInput.value);
+    createBoxes(inputAmount)
+});
 
 const btnDelete = document.querySelector('[data-destroy]');
 

@@ -19,8 +19,8 @@ function handleSubmit(event) {
         registerInfo.email = email;
         registerInfo.password = password;
         console.log(registerInfo);
+        form.reset()
     }
-    form.reset()
 }
 
 const inputs = document.getElementsByTagName('input');
